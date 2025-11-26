@@ -17,7 +17,7 @@ function ContactPage() {
                     Contact Us
                 </h2>
                 <p className="text-gray-400 mt-3 text-lg">
-                    We're here to help — reach out any time.
+                    We're here to help you — reach out any time.
                 </p>
             </div>
 
