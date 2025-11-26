@@ -93,7 +93,7 @@ export default function Navbar() {
 
                     {/* CONTACT BUTTON */}
                     <Link
-                        to="/"
+                        to="/contact"
                         className="
                             px-5 py-2 rounded-lg
                             bg-[#27651c] text-white font-light tracking-wide

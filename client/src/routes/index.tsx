@@ -39,7 +39,7 @@ export default function Index() {
                         alt="Office team working"
                         className="
                 w-full h-full object-cover
-                rounded-none lg:rounded-r-xl
+                rounded-none
                 shadow-[0_4px_30px_rgba(0,0,0,0.25)]
                 border-b border-white/10 lg:border-b-0 lg:border-r border-white/10
                 transition-transform duration-500
@@ -89,7 +89,7 @@ export default function Index() {
             {/* Contact CTA */}
             <div className="w-full flex justify-center mt-10 px-4">
                 <Link
-                    to="/"
+                    to="/contact"
                     className="
             group relative px-6 py-4
             text-lg md:text-xl font-semibold text-white
