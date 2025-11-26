@@ -1,75 +1,84 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import beaver from "@/assets/beaver.svg";
-import { Button } from "@/components/ui/button";
-import { hcWithType } from "server/dist/client";
-import { useMutation } from "@tanstack/react-query";
+// import { Link } from '@tanstack/react-router'
+import Office from '/images/OfficeTeam.jpg'
+import Carousel from "@/components/homepage/Carousel.tsx";
+import Certs from "@/components/homepage/Certs.tsx";
+import Portals from "@/components/homepage/Portals.tsx";
+import {createFileRoute} from "@tanstack/react-router";   // Vite public asset
 
-export const Route = createFileRoute("/")({
-	component: Index,
-});
+export const Route = createFileRoute('/')({
+    component: Index,
+})
 
-const SERVER_URL = import.meta.env.VITE_SERVER_URL || "http://localhost:3000";
 
-const client = hcWithType(SERVER_URL);
+export default function Index() {
+    return (
+        <>
+            <Carousel
+                images={[
+                    { src: "/images/tax-form-2.jpg", caption: "Expert Tax Planning for Individuals & Businesses" },
+                    { src: "/images/growth-2.jpg", caption: "Professional Accounting Services You Can Trust" },
+                    { src: "/images/cash.jpg", caption: "Real Support. Real People. Real Results." },
+                ]}
+            />
 
-type ResponseType = Awaited<ReturnType<typeof client.hello.$get>>;
+            {/* Office Image + Intro Text */}
+            <div className="flex flex-col lg:flex-row sm:max-lg:items-center justify-center">
 
-function Index() {
-	const [data, setData] = useState<
-		Awaited<ReturnType<ResponseType["json"]>> | undefined
-	>();
+                {/* Office Image */}
+                <div className="w-full h-auto p-3 md:py-3">
+                    <img
+                        src={Office}
+                        alt="Office image"
+                        className="w-full h-auto object-cover"
+                    />
+                </div>
 
-	const { mutate: sendRequest } = useMutation({
-		mutationFn: async () => {
-			try {
-				const res = await client.hello.$get();
-				if (!res.ok) {
-					console.log("Error fetching data");
-					return;
-				}
-				const data = await res.json();
-				setData(data);
-			} catch (error) {
-				console.log(error);
-			}
-		},
-	});
+                {/* Description */}
+                <div className="w-full p-3 md:py-3">
+                    <p className="text-lg">
+                        Looking for high-quality financial and tax advice and complete accounting services at
+                        a reasonable price? Welcome to Sentry Accounting & Income Tax Planning Inc., offering
+                        accounting, taxation, and small business consulting services at affordable fees.
+                        We're flexible. We're friendly. And perhaps most of all, we listen. Call us for a
+                        complimentary, no cost, no-obligation initial consultation—with the personal touch.
+                        Our website details a full range of services, contact information, and a company
+                        profile, so click around and stay for a while!
+                        <br /><br /><br />
+                    </p>
+                </div>
 
-	return (
-		<div className="max-w-xl mx-auto flex flex-col gap-6 items-center justify-center min-h-screen">
-			<a
-				href="https://github.com/stevedylandev/bhvr"
-				target="_blank"
-				rel="noopener"
-			>
-				<img
-					src={beaver}
-					className="w-16 h-16 cursor-pointer"
-					alt="beaver logo"
-				/>
-			</a>
-			<h1 className="text-5xl font-black">bhvr</h1>
-			<h2 className="text-2xl font-bold">Bun + Hono + Vite + React</h2>
-			<p>A typesafe fullstack monorepo</p>
-			<div className="flex items-center gap-4">
-				<Button onClick={() => sendRequest()}>Call API</Button>
-				<Button variant="secondary" asChild>
-					<a target="_blank" href="https://bhvr.dev" rel="noopener">
-						Docs
-					</a>
-				</Button>
-			</div>
-			{data && (
-				<pre className="bg-gray-100 p-4 rounded-md">
-					<code>
-						Message: {data.message} <br />
-						Success: {data.success.toString()}
-					</code>
-				</pre>
-			)}
-		</div>
-	);
+            </div>
+
+            {/* Contact CTA */}
+            //TO-DO: Change to Link
+            <text
+                // to="."
+                className="flex justify-center items-center font-bold hover:underline underline-offset-2 p-3"
+            >
+                But don't hesitate to contact us — your initial one-hour consultation is FREE.
+            </text>
+
+            {/* Certifications */}
+            <Certs />
+
+            <br />
+
+            {/* Memberships */}
+            <p className="text-xl font-bold flex justify-center items-center">
+                Memberships:
+            </p>
+
+            <br />
+
+            <ul className="text-lg flex justify-center items-center flex-col lg:flex-row gap-3 text-center px-4">
+                <li>(CRTP) CTEC Registered Tax Preparer, American Institute of CPAs, Charter Member</li>
+                <li>Member (NACPB) National Association Of Certified Public Bookkeepers</li>
+            </ul>
+
+            <br />
+
+            {/* Portals Section */}
+            <Portals />
+        </>
+    )
 }
-
-export default Index;
