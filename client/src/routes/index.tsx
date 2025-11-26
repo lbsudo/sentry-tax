@@ -1,4 +1,4 @@
-// import { Link } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
 import Office from '/images/OfficeTeam.jpg'
 import Carousel from "@/components/homepage/Carousel.tsx";
 import Certs from "@/components/homepage/Certs.tsx";
@@ -22,49 +22,109 @@ export default function Index() {
             />
 
             {/* Office Image + Intro Text */}
-            <div className="flex flex-col lg:flex-row sm:max-lg:items-center justify-center">
+            <div
+                className="
+        w-full
+        flex flex-col lg:flex-row
+        items-center lg:items-stretch
+        justify-center
+        gap-0
+    "
+            >
 
                 {/* Office Image */}
-                <div className="w-full h-auto p-3 md:py-3">
+                <div className="w-full lg:w-1/2">
                     <img
                         src={Office}
-                        alt="Office image"
-                        className="w-full h-auto object-cover"
+                        alt="Office team working"
+                        className="
+                w-full h-full object-cover
+                rounded-none lg:rounded-r-xl
+                shadow-[0_4px_30px_rgba(0,0,0,0.25)]
+                border-b border-white/10 lg:border-b-0 lg:border-r border-white/10
+                transition-transform duration-500
+                hover:scale-[1.01]
+            "
                     />
                 </div>
 
-                {/* Description */}
-                <div className="w-full p-3 md:py-3">
-                    <p className="text-lg">
-                        Looking for high-quality financial and tax advice and complete accounting services at
-                        a reasonable price? Welcome to Sentry Accounting & Income Tax Planning Inc., offering
-                        accounting, taxation, and small business consulting services at affordable fees.
-                        We're flexible. We're friendly. And perhaps most of all, we listen. Call us for a
-                        complimentary, no cost, no-obligation initial consultation—with the personal touch.
-                        Our website details a full range of services, contact information, and a company
-                        profile, so click around and stay for a while!
-                        <br /><br /><br />
+                {/* Intro Text */}
+                <div
+                    className="
+            w-full lg:w-1/2
+            flex flex-col justify-center
+            text-center lg:text-left
+            p-6 md:p-12
+            bg-white/5 backdrop-blur-md
+            border-t border-white/10 lg:border-t-0 lg:border-l border-white/10
+            shadow-xl
+            animate-[fadeIn_0.6s_ease-out]
+
+            mt-0 lg:mt-0     /* ⭐ ADDED: spacing only on mobile */
+        "
+                >
+                    <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">
+                        Your Trusted Financial & Tax Professionals
+                    </h2>
+
+                    <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
+                        Looking for high-quality financial and tax advice at a reasonable price?
+                        Welcome to <span className="text-[#27651c] font-semibold">Sentry Accounting & Income Tax Planning Inc.</span>,
+                        offering accounting, taxation, and small business consulting services
+                        at affordable fees.
+                    </p>
+
+                    <p className="text-gray-300 text-lg md:text-xl leading-relaxed mt-4">
+                        We're flexible. We're friendly. And above all — we listen.
+                        Call us for a complimentary, no-cost, no-obligation initial consultation.
+                    </p>
+
+                    <p className="text-gray-300 text-lg md:text-xl leading-relaxed mt-4">
+                        Our website details a full range of services, helpful resources,
+                        contact information, and a company profile — so click around and stay awhile!
                     </p>
                 </div>
-
             </div>
 
             {/* Contact CTA */}
-            //TO-DO: Change to Link
-            <text
-                // to="."
-                className="flex justify-center items-center font-bold hover:underline underline-offset-2 p-3"
-            >
-                But don't hesitate to contact us — your initial one-hour consultation is FREE.
-            </text>
+            <div className="w-full flex justify-center mt-10 px-4">
+                <Link
+                    to="/"
+                    className="
+            group relative px-6 py-4
+            text-lg md:text-xl font-semibold text-white
+            rounded-xl overflow-hidden
+            transition-all duration-300
+            bg-[#27651c]
+            shadow-[0_0_12px_rgba(39,101,28,0.5)]
+            hover:shadow-[0_0_25px_rgba(39,101,28,0.9)]
+            hover:bg-[#1f5317]
+        "
+                >
+                    {/* Sliding Shine Effect */}
+                    <span
+                        className="
+                absolute inset-0 -translate-x-full
+                bg-gradient-to-r from-transparent via-white/20 to-transparent
+                group-hover:translate-x-full
+                transition-transform duration-700
+            "
+                    />
 
+                    {/* CTA Text */}
+                    But don’t hesitate to contact us — your initial one-hour consultation is FREE.
+                </Link>
+            </div>
+
+            {/* Portals Section */}
+            <Portals />
             {/* Certifications */}
             <Certs />
 
             <br />
 
             {/* Memberships */}
-            <p className="text-xl font-bold flex justify-center items-center">
+           {/* <p className="text-xl font-bold flex justify-center items-center">
                 Memberships:
             </p>
 
@@ -75,10 +135,8 @@ export default function Index() {
                 <li>Member (NACPB) National Association Of Certified Public Bookkeepers</li>
             </ul>
 
-            <br />
+            <br />*/}
 
-            {/* Portals Section */}
-            <Portals />
         </>
     )
 }

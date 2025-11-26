@@ -3,7 +3,7 @@ import { FaComments, FaUsers, FaServer, FaCreditCard } from "react-icons/fa";
 
 export default function Portals() {
     return (
-        <div className="flex flex-col lg:flex-row justify-center items-center">
+        <div className="flex flex-col lg:flex-row justify-center items-center mt-2">
 
             {/* Testimonials */}
             <div className="flex w-3/4 flex-col items-center p-3">
