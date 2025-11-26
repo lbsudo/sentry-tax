@@ -85,6 +85,7 @@ export default function Navbar() {
 
                         <NavItem to="/" label="HOME" refs={navRefs} activePath={location.pathname} />
                         <NavItem to="/about" label="ABOUT" refs={navRefs} activePath={location.pathname} />
+                        <NavItem to="/services" label="SERVICES" refs={navRefs} activePath={location.pathname} />
 
                         <Dropdowns />
 

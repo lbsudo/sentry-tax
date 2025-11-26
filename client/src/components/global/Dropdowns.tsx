@@ -8,10 +8,8 @@ type DropdownProps = {
 };
 
 export default function Dropdowns({ mobile = false, onNavigate }: DropdownProps) {
-    const [showServices, setShowServices] = useState(false);
     const [showResources, setShowResources] = useState(false);
 
-    const servicesRef = useRef<HTMLDivElement | null>(null);
     const resourcesRef = useRef<HTMLDivElement | null>(null);
 
     // DESKTOP: click outside to close
@@ -19,8 +17,6 @@ export default function Dropdowns({ mobile = false, onNavigate }: DropdownProps)
         if (mobile) return;
 
         const handler = (e: MouseEvent) => {
-            if (servicesRef.current && !servicesRef.current.contains(e.target as Node))
-                setShowServices(false);
             if (resourcesRef.current && !resourcesRef.current.contains(e.target as Node))
                 setShowResources(false);
         };
@@ -31,24 +27,6 @@ export default function Dropdowns({ mobile = false, onNavigate }: DropdownProps)
 
     return (
         <>
-            {/* SERVICES */}
-            <div className={`${mobile ? "space-y-1" : "relative"}`} ref={servicesRef}>
-                <DropdownToggle
-                    label="SERVICES"
-                    open={showServices}
-                    onClick={() => {
-                        setShowServices(!showServices);
-                        setShowResources(false);
-                    }}
-                />
-
-                {showServices && (
-                    <DropdownList mobile={mobile}>
-                        <DropdownItem to="/" label="ALL SERVICES" onNavigate={onNavigate} />
-                        <DropdownItem to="/" label="PAYROLL SERVICES" onNavigate={onNavigate} />
-                    </DropdownList>
-                )}
-            </div>
 
             {/* RESOURCES */}
             <div className={`${mobile ? "space-y-1" : "relative"}`} ref={resourcesRef}>
@@ -57,16 +35,15 @@ export default function Dropdowns({ mobile = false, onNavigate }: DropdownProps)
                     open={showResources}
                     onClick={() => {
                         setShowResources(!showResources);
-                        setShowServices(false);
                     }}
                 />
 
                 {showResources && (
                     <DropdownList mobile={mobile}>
-                        <DropdownItem to="/" label="RESOURCES" onNavigate={onNavigate} />
+                        {/*<DropdownItem to="/" label="RESOURCES" onNavigate={onNavigate} />*/}
                         <DropdownItem to="/" label="TAX CENTER" onNavigate={onNavigate} />
-                        <DropdownItem to="/" label="TAX REFUNDS" onNavigate={onNavigate} />
-                        <DropdownItem to="/" label="TAX EVENTS" onNavigate={onNavigate} />
+                        {/*<DropdownItem to="/" label="TAX REFUNDS" onNavigate={onNavigate} />*/}
+                        {/*<DropdownItem to="/" label="TAX EVENTS" onNavigate={onNavigate} />*/}
                         <DropdownItem to="/" label="FIN. CALCULATORS" onNavigate={onNavigate} />
                         <DropdownItem to="/" label="PAYCHECK CALCULATOR" onNavigate={onNavigate} />
                         <DropdownItem to="/" label="FAQ" onNavigate={onNavigate} />
