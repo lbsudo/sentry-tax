@@ -40,13 +40,9 @@ export default function Dropdowns({ mobile = false, onNavigate }: DropdownProps)
 
                 {showResources && (
                     <DropdownList mobile={mobile}>
-                        {/*<DropdownItem to="/" label="RESOURCES" onNavigate={onNavigate} />*/}
-                        <DropdownItem to="/" label="TAX CENTER" onNavigate={onNavigate} />
-                        {/*<DropdownItem to="/" label="TAX REFUNDS" onNavigate={onNavigate} />*/}
-                        {/*<DropdownItem to="/" label="TAX EVENTS" onNavigate={onNavigate} />*/}
-                        <DropdownItem to="/" label="FIN. CALCULATORS" onNavigate={onNavigate} />
-                        <DropdownItem to="/" label="PAYCHECK CALCULATOR" onNavigate={onNavigate} />
-                        <DropdownItem to="/" label="FAQ" onNavigate={onNavigate} />
+                        <DropdownItem to="/resources/tax-center" label="TAX CENTER" onNavigate={onNavigate} />
+                        <DropdownItem to="/resources/financial-calculators" label="FIN. CALCULATORS" onNavigate={onNavigate} />
+                        <DropdownItem to="/resources/faq" label="FAQ" onNavigate={onNavigate} />
                     </DropdownList>
                 )}
             </div>

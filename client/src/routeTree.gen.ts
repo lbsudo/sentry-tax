@@ -13,6 +13,9 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ResourcesTaxCenterRouteImport } from './routes/resources/tax-center'
+import { Route as ResourcesFinancialCalculatorsRouteImport } from './routes/resources/financial-calculators'
+import { Route as ResourcesFaqRouteImport } from './routes/resources/faq'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
@@ -34,18 +37,40 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesTaxCenterRoute = ResourcesTaxCenterRouteImport.update({
+  id: '/resources/tax-center',
+  path: '/resources/tax-center',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesFinancialCalculatorsRoute =
+  ResourcesFinancialCalculatorsRouteImport.update({
+    id: '/resources/financial-calculators',
+    path: '/resources/financial-calculators',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ResourcesFaqRoute = ResourcesFaqRouteImport.update({
+  id: '/resources/faq',
+  path: '/resources/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
+  '/resources/faq': typeof ResourcesFaqRoute
+  '/resources/financial-calculators': typeof ResourcesFinancialCalculatorsRoute
+  '/resources/tax-center': typeof ResourcesTaxCenterRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
+  '/resources/faq': typeof ResourcesFaqRoute
+  '/resources/financial-calculators': typeof ResourcesFinancialCalculatorsRoute
+  '/resources/tax-center': typeof ResourcesTaxCenterRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +78,38 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
+  '/resources/faq': typeof ResourcesFaqRoute
+  '/resources/financial-calculators': typeof ResourcesFinancialCalculatorsRoute
+  '/resources/tax-center': typeof ResourcesTaxCenterRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/services'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services'
+    | '/resources/faq'
+    | '/resources/financial-calculators'
+    | '/resources/tax-center'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/services'
-  id: '__root__' | '/' | '/about' | '/contact' | '/services'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services'
+    | '/resources/faq'
+    | '/resources/financial-calculators'
+    | '/resources/tax-center'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services'
+    | '/resources/faq'
+    | '/resources/financial-calculators'
+    | '/resources/tax-center'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +117,9 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   ServicesRoute: typeof ServicesRoute
+  ResourcesFaqRoute: typeof ResourcesFaqRoute
+  ResourcesFinancialCalculatorsRoute: typeof ResourcesFinancialCalculatorsRoute
+  ResourcesTaxCenterRoute: typeof ResourcesTaxCenterRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +152,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources/tax-center': {
+      id: '/resources/tax-center'
+      path: '/resources/tax-center'
+      fullPath: '/resources/tax-center'
+      preLoaderRoute: typeof ResourcesTaxCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/financial-calculators': {
+      id: '/resources/financial-calculators'
+      path: '/resources/financial-calculators'
+      fullPath: '/resources/financial-calculators'
+      preLoaderRoute: typeof ResourcesFinancialCalculatorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/faq': {
+      id: '/resources/faq'
+      path: '/resources/faq'
+      fullPath: '/resources/faq'
+      preLoaderRoute: typeof ResourcesFaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +181,9 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   ServicesRoute: ServicesRoute,
+  ResourcesFaqRoute: ResourcesFaqRoute,
+  ResourcesFinancialCalculatorsRoute: ResourcesFinancialCalculatorsRoute,
+  ResourcesTaxCenterRoute: ResourcesTaxCenterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
