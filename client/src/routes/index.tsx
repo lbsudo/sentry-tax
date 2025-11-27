@@ -69,7 +69,7 @@ export default function Index() {
 
                     <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
                         Looking for high-quality financial and tax advice at a reasonable price?
-                        Welcome to <span className="text-[#27651c] font-semibold">Sentry Accounting & Income Tax Planning Inc.</span>,
+                        Welcome to <span className="text-[#3DA02C] font-semibold">Sentry Accounting & Income Tax Planning Inc.</span>,
                         offering accounting, taxation, and small business consulting services
                         at affordable fees.
                     </p>

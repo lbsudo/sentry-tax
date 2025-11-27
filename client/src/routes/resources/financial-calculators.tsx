@@ -9,10 +9,10 @@ import SavingsCalculator from "@/components/financial-calculators/SavingsCalcula
 import InvestmentsCalculator from "@/components/financial-calculators/InvestmentCalculator.tsx";
 
 export const Route = createFileRoute('/resources/financial-calculators')({
-    component: RouteComponent,
+    component: FinancialCalculators,
 })
 
-function RouteComponent() {
+export default function FinancialCalculators() {
     return (
         <>
             <PaycheckCalculator />

@@ -63,7 +63,7 @@ function ContactPage() {
                             href="mailto:admin@sentrytax.com"
                             className="ml-1 text-[#27651c] font-semibold hover:underline"
                         >
-                            admin@sentrytax.com
+                            contact@sentrytax.com
                         </a>
                     </p>
                 </div>

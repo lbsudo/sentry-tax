@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as PaymentPortalRouteImport } from './routes/payment-portal'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -20,6 +21,11 @@ import { Route as ResourcesFaqRouteImport } from './routes/resources/faq'
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentPortalRoute = PaymentPortalRouteImport.update({
+  id: '/payment-portal',
+  path: '/payment-portal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/payment-portal': typeof PaymentPortalRoute
   '/services': typeof ServicesRoute
   '/resources/faq': typeof ResourcesFaqRoute
   '/resources/financial-calculators': typeof ResourcesFinancialCalculatorsRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/payment-portal': typeof PaymentPortalRoute
   '/services': typeof ServicesRoute
   '/resources/faq': typeof ResourcesFaqRoute
   '/resources/financial-calculators': typeof ResourcesFinancialCalculatorsRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/payment-portal': typeof PaymentPortalRoute
   '/services': typeof ServicesRoute
   '/resources/faq': typeof ResourcesFaqRoute
   '/resources/financial-calculators': typeof ResourcesFinancialCalculatorsRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/payment-portal'
     | '/services'
     | '/resources/faq'
     | '/resources/financial-calculators'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/payment-portal'
     | '/services'
     | '/resources/faq'
     | '/resources/financial-calculators'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/payment-portal'
     | '/services'
     | '/resources/faq'
     | '/resources/financial-calculators'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  PaymentPortalRoute: typeof PaymentPortalRoute
   ServicesRoute: typeof ServicesRoute
   ResourcesFaqRoute: typeof ResourcesFaqRoute
   ResourcesFinancialCalculatorsRoute: typeof ResourcesFinancialCalculatorsRoute
@@ -129,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payment-portal': {
+      id: '/payment-portal'
+      path: '/payment-portal'
+      fullPath: '/payment-portal'
+      preLoaderRoute: typeof PaymentPortalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  PaymentPortalRoute: PaymentPortalRoute,
   ServicesRoute: ServicesRoute,
   ResourcesFaqRoute: ResourcesFaqRoute,
   ResourcesFinancialCalculatorsRoute: ResourcesFinancialCalculatorsRoute,

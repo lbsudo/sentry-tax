@@ -78,7 +78,7 @@ export default function Navbar() {
                         <div
                             ref={indicatorRef}
                             className="
-                                absolute -bottom-1 h-[2px] bg-[#27651c]
+                                absolute -bottom-1 h-[2px] bg-[#54CA3F]
                                 transition-all duration-300 opacity-0
                             "
                         ></div>
@@ -97,10 +97,10 @@ export default function Navbar() {
                         to="/contact"
                         className="
                             px-5 py-2 rounded-lg
-                            bg-[#27651c] text-white font-light tracking-wide
-                            border border-[#27651c]/50
-                            shadow-[0_0_12px_rgba(39,101,28,0.6)]
-                            hover:bg-[#1e4f16] hover:shadow-[0_0_18px_rgba(39,101,28,0.8)]
+                            bg-[#54CA3F] text-black font-light tracking-wide
+                            border border-[#54CA3F]/50
+                            shadow-[0_0_12px_rgba(84,202,63,0.6)]
+                            hover:bg-[#3ea933] hover:shadow-[0_0_18px_rgba(84,202,63,0.8)]
                             transition-all duration-300
                         "
                     >
@@ -109,7 +109,7 @@ export default function Navbar() {
                 </div>
             </nav>
 
-            {/* MOBILE NAV WRAPPER (NO BLUR) */}
+            {/* MOBILE NAV WRAPPER */}
             <nav
                 className={`
                     lg:hidden w-full sticky top-0 z-50
@@ -131,37 +131,55 @@ export default function Navbar() {
                 </div>
             </nav>
 
-            {/* MOBILE OVERLAY */}
-            <div
-                className={`
-                    fixed inset-0 bg-black/60 z-40
-                    transition-opacity duration-300
-                    ${showNav ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
-                `}
-                onClick={() => setShowNav(false)}
-            ></div>
-
             {/* MOBILE SIDEBAR */}
             <div
                 className={`
-                    fixed top-0 right-0 h-full w-72 z-50
-                    bg-[#0d0d0d] text-white
-                    p-6 space-y-6
-                    shadow-2xl border-l border-black
-                    transform transition-transform duration-300
-                    ${showNav ? "translate-x-0" : "translate-x-full"}
-                `}
+        fixed top-0 right-0 h-full w-80 z-50
+        bg-[#0b0b0b] text-white
+        flex flex-col
+        p-7
+        shadow-[0_0_35px_rgba(0,0,0,0.75)]
+        border-l border-gray-800
+        transform transition-transform duration-300
+        ${showNav ? "translate-x-0" : "translate-x-full"}
+    `}
             >
-                <h2 className="text-xl font-semibold mb-2">Menu</h2>
+                {/* HEADER */}
+                <div className="flex items-center justify-between pb-5 border-b border-gray-800">
+                    <h2 className="text-2xl font-semibold tracking-wide">Menu</h2>
 
-                <NavMobileItem to="/" label="HOME" onClick={() => setShowNav(false)} />
-                <NavMobileItem to="/about" label="ABOUT" onClick={() => setShowNav(false)} />
+                    <button
+                        onClick={() => setShowNav(false)}
+                        className="text-gray-400 text-3xl hover:text-[#3DA02C] transition"
+                    >
+                        ×
+                    </button>
+                </div>
 
-                <Dropdowns mobile onNavigate={() => setShowNav(false)} />
+                {/* MENU ITEMS */}
+                <nav className="space-y-5 text-lg font-light tracking-wide mt-6">
 
-                <NavMobileItem to="/payment-portal" label="PAYMENT PORTAL" onClick={() => setShowNav(false)} />
-                <NavMobileItem to="/contact" label="CONTACT" onClick={() => setShowNav(false)} />
+                    <NavMobileItem to="/" label="HOME" onClick={() => setShowNav(false)} />
+                    <NavMobileItem to="/about" label="ABOUT" onClick={() => setShowNav(false)} />
+
+                    {/* DROPDOWNS (no dividers above or below) */}
+                    <Dropdowns mobile onNavigate={() => setShowNav(false)} />
+
+                    <NavMobileItem to="/services" label="SERVICES" onClick={() => setShowNav(false)} />
+                    <NavMobileItem to="/payment-portal" label="PAYMENT PORTAL" onClick={() => setShowNav(false)} />
+                    <NavMobileItem to="/contact" label="CONTACT" onClick={() => setShowNav(false)} />
+
+                </nav>
+
+                {/* FOOTER */}
+                <div className="mt-auto pt-6 border-t border-gray-800">
+                    <p className="text-sm text-gray-500">
+                        © {new Date().getFullYear()} Sentry Tax & Payroll
+                    </p>
+                </div>
             </div>
+
+
         </>
     );
 }
@@ -177,12 +195,12 @@ function NavItem({ to, label, refs, activePath }: any) {
                 refs.current[to] = el;
             }}
             className={`
-                relative text-lg font-light tracking-wide transition-all duration-300
-                ${isActive ? "text-[#27651c]" : "text-white"}
-                ${isActive ? "drop-shadow-[0_0_6px_#27651c]" : "hover:text-[#27651c]"}
+                relative text-lg font-medium tracking-wide transition-all duration-300
+                ${isActive ? "text-[#3DA02C]" : "text-white"}
+                ${isActive ? "drop-shadow-[0_0_6px_#3DA02C]" : "hover:text-[#3DA02C]"}
                 after:content-[''] after:absolute after:left-0 after:-bottom-1
                 after:h-[2px] after:w-0 hover:after:w-full
-                after:bg-[#27651c] after:transition-all after:duration-300
+                after:bg-[#3DA02C] after:transition-all after:duration-300
             `}
         >
             {label}
@@ -197,10 +215,10 @@ function NavMobileItem({ to, label, onClick }: any) {
             to={to}
             onClick={onClick}
             className="
-                text-white text-lg font-medium
-                transition-all duration-300
-                hover:text-[#27651c]
-                block
+                block py-2.5
+                text-white text-lg font-medium tracking-wide
+                hover:text-[#3DA02C]
+                transition
             "
         >
             {label}

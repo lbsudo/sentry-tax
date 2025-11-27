@@ -106,7 +106,7 @@ function ServicesPage() {
 function Section({ title, text }: { title: string; text: string }) {
     return (
         <div className="space-y-3">
-            <h3 className="text-2xl font-semibold text-[#27651c] underline underline-offset-4">
+            <h3 className="text-2xl font-semibold text-[#3DA02C] underline underline-offset-4">
                 {title}
             </h3>
 
